@@ -55,21 +55,21 @@ export default function HomePage() {
 
   const getBalance = async() => {
     if (atm) {
-      setBalance((await atm.getBalance()).toNumber());
+      setBalance((await atm.getTotal()).toNumber());
     }
   }
 
-  const deposit = async() => {
+  const mul = async() => {
     if (atm) {
-      let tx = await atm.deposit(5);
+      let tx = await atm.mul(5, 8);
       await tx.wait()
       getBalance();
     }
   }
 
-  const withdraw = async() => {
+  const div = async() => {
     if (atm) {
-      let tx = await atm.withdraw(3);
+      let tx = await atm.div(25, 5);
       await tx.wait()
       getBalance();
     }
@@ -93,9 +93,9 @@ export default function HomePage() {
     return (
       <div>
         <p>Kushaal's Account: {account}</p>
-        <p>Kushaal's Balance: {balance}</p>
-        <button onClick={deposit}>Deposit 5 ETH</button>
-        <button onClick={withdraw}>Withdraw 3 ETH</button>
+        <p>Total: {balance}</p>
+        <button onClick={mul}>Multiply</button>
+        <button onClick={div}>Divide</button>
       </div>
     )
   }
@@ -104,7 +104,7 @@ export default function HomePage() {
 
   return (
     <main className="container">
-      <header><h1>Welcome to Kushaal's ATM!</h1><p>You can either deposit or withdraw ETH from the account.</p><p>This is for my Module 2 Avalanche</p></header>
+      <header><h1>Calculator</h1><p>You can multiply or divide.</p><p>This is for my Module 2 Avalanche</p></header>
       {initUser()}
       <style jsx>{`
         .container {
