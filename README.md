@@ -1,4 +1,4 @@
-# Avalanchemodule2
+# Dapp
 
 This code provides the smart contract and frontend to the Calculator app.
 
